@@ -1,0 +1,84 @@
+{
+	"name": "DS_MIGRATION_CSV",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_MIGRATION_CSV",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputmultiplefiles"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Date",
+				"type": "String"
+			},
+			{
+				"name": "Global Revenue",
+				"type": "String"
+			},
+			{
+				"name": "UCAN Streaming Revenue",
+				"type": "String"
+			},
+			{
+				"name": "EMEA Streaming Revenue",
+				"type": "String"
+			},
+			{
+				"name": "LATM Streaming Revenue",
+				"type": "String"
+			},
+			{
+				"name": "APAC Streaming Revenue",
+				"type": "String"
+			},
+			{
+				"name": "UCAN Members",
+				"type": "String"
+			},
+			{
+				"name": "EMEA  Members",
+				"type": "String"
+			},
+			{
+				"name": "LATM Members",
+				"type": "String"
+			},
+			{
+				"name": "APAC Members",
+				"type": "String"
+			},
+			{
+				"name": "UCAN ARPU",
+				"type": "String"
+			},
+			{
+				"name": "EMEA ARPU",
+				"type": "String"
+			},
+			{
+				"name": "LATM  ARPU",
+				"type": "String"
+			},
+			{
+				"name": "APAC  ARPU",
+				"type": "String"
+			},
+			{
+				"name": "Netflix Streaming Memberships ",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
