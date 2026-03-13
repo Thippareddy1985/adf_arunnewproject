@@ -1,0 +1,482 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "dfmigrtiondev"
+		},
+		"DS_LOOKUP_SQLSERVER_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_LOOKUP_SQLSERVER'"
+		},
+		"DS_SQLSERVER_MIG_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_SQLSERVER_MIG'"
+		},
+		"LS_GETMETADATA001_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_GETMETADATA001'"
+		},
+		"LS_MIGRATION_CSV_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MIGRATION_CSV'"
+		},
+		"LS_MIGRATION_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MIGRATION_PARQUET'"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_NEW_SQLSERVER_MIGRATION'"
+		},
+		"LS_SP_INSERNAME1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SP_INSERNAME1'"
+		},
+		"LS_SQLSERVER_M_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_M'"
+		},
+		"LS_SQLSERVER_MIG1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG1'"
+		},
+		"LS_SQLSERVER_MIG11_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG11'"
+		},
+		"SP_INSERTINPUT_NAMES_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SP_INSERTINPUT_NAMES'"
+		},
+		"lS_METADAT_SQLSERVER_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'lS_METADAT_SQLSERVER'"
+		},
+		"ls_getmetadata_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_getmetadata'"
+		},
+		"ls_getmetadata002_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_getmetadata002'"
+		},
+		"ls_lookup_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_lookup'"
+		},
+		"ls_metadata_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_metadata'"
+		},
+		"ls_metadata111_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_metadata111'"
+		},
+		"ls_new_migration_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_new_migration'"
+		},
+		"ls_sqlserver_mig_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'ls_sqlserver_mig'"
+		},
+		"ls_sqlserver_parquet_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_sqlserver_parquet'"
+		},
+		"DS_LOOKUP_SQLSERVER_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"DS_LOOKUP_SQLSERVER_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Visionboardprac"
+		},
+		"DS_LOOKUP_SQLSERVER_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"DS_SQLSERVER_MIG_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"DS_SQLSERVER_MIG_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"DS_SQLSERVER_MIG_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_GETMETADATA001_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarundemo.dfs.core.windows.net/"
+		},
+		"LS_MIGRATION_CSV_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"LS_MIGRATION_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_SP_INSERNAME1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SP_INSERNAME1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Visionboardprac"
+		},
+		"LS_SP_INSERNAME1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_SQLSERVER_M_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_M_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_SQLSERVER_M_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_SQLSERVER_MIG1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_SQLSERVER_MIG11_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG11_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"SP_INSERTINPUT_NAMES_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"SP_INSERTINPUT_NAMES_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Visionboardprac"
+		},
+		"SP_INSERTINPUT_NAMES_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"lS_METADAT_SQLSERVER_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"lS_METADAT_SQLSERVER_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "AdventureWorks2019"
+		},
+		"lS_METADAT_SQLSERVER_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"ls_getmetadata_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_getmetadata002_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarundemo.dfs.core.windows.net/"
+		},
+		"ls_lookup_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_metadata_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_metadata111_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_new_migration_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_sqlserver_mig_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"ls_sqlserver_mig_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "[[AdventureWorks2019]"
+		},
+		"ls_sqlserver_mig_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"ls_sqlserver_parquet_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "dfmigrtiondev_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"LS_GETMETADATA001_accountKey": {
+						"value": "[parameters('LS_GETMETADATA001_accountKey')]"
+					},
+					"LS_MIGRATION_CSV_accountKey": {
+						"value": "[parameters('LS_MIGRATION_CSV_accountKey')]"
+					},
+					"LS_MIGRATION_PARQUET_accountKey": {
+						"value": "[parameters('LS_MIGRATION_PARQUET_accountKey')]"
+					},
+					"ls_getmetadata_accountKey": {
+						"value": "[parameters('ls_getmetadata_accountKey')]"
+					},
+					"ls_getmetadata002_accountKey": {
+						"value": "[parameters('ls_getmetadata002_accountKey')]"
+					},
+					"ls_lookup_accountKey": {
+						"value": "[parameters('ls_lookup_accountKey')]"
+					},
+					"ls_metadata_accountKey": {
+						"value": "[parameters('ls_metadata_accountKey')]"
+					},
+					"ls_metadata111_accountKey": {
+						"value": "[parameters('ls_metadata111_accountKey')]"
+					},
+					"ls_new_migration_accountKey": {
+						"value": "[parameters('ls_new_migration_accountKey')]"
+					},
+					"ls_sqlserver_parquet_accountKey": {
+						"value": "[parameters('ls_sqlserver_parquet_accountKey')]"
+					},
+					"DS_LOOKUP_SQLSERVER_password": {
+						"value": "[parameters('DS_LOOKUP_SQLSERVER_password')]"
+					},
+					"LS_GETMETADATA001_properties_typeProperties_url": {
+						"value": "[parameters('LS_GETMETADATA001_properties_typeProperties_url')]"
+					},
+					"LS_MIGRATION_CSV_properties_typeProperties_url": {
+						"value": "[parameters('LS_MIGRATION_CSV_properties_typeProperties_url')]"
+					},
+					"LS_MIGRATION_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_MIGRATION_PARQUET_properties_typeProperties_url')]"
+					},
+					"ls_getmetadata_properties_typeProperties_url": {
+						"value": "[parameters('ls_getmetadata_properties_typeProperties_url')]"
+					},
+					"ls_getmetadata002_properties_typeProperties_url": {
+						"value": "[parameters('ls_getmetadata002_properties_typeProperties_url')]"
+					},
+					"ls_lookup_properties_typeProperties_url": {
+						"value": "[parameters('ls_lookup_properties_typeProperties_url')]"
+					},
+					"ls_metadata_properties_typeProperties_url": {
+						"value": "[parameters('ls_metadata_properties_typeProperties_url')]"
+					},
+					"ls_metadata111_properties_typeProperties_url": {
+						"value": "[parameters('ls_metadata111_properties_typeProperties_url')]"
+					},
+					"ls_new_migration_properties_typeProperties_url": {
+						"value": "[parameters('ls_new_migration_properties_typeProperties_url')]"
+					},
+					"ls_sqlserver_parquet_properties_typeProperties_url": {
+						"value": "[parameters('ls_sqlserver_parquet_properties_typeProperties_url')]"
+					},
+					"DS_LOOKUP_SQLSERVER_properties_typeProperties_server": {
+						"value": "[parameters('DS_LOOKUP_SQLSERVER_properties_typeProperties_server')]"
+					},
+					"DS_LOOKUP_SQLSERVER_properties_typeProperties_database": {
+						"value": "[parameters('DS_LOOKUP_SQLSERVER_properties_typeProperties_database')]"
+					},
+					"DS_LOOKUP_SQLSERVER_properties_typeProperties_userName": {
+						"value": "[parameters('DS_LOOKUP_SQLSERVER_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "dfmigrtiondev_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"DS_SQLSERVER_MIG_password": {
+						"value": "[parameters('DS_SQLSERVER_MIG_password')]"
+					},
+					"LS_NEW_SQLSERVER_MIGRATION_password": {
+						"value": "[parameters('LS_NEW_SQLSERVER_MIGRATION_password')]"
+					},
+					"LS_SP_INSERNAME1_password": {
+						"value": "[parameters('LS_SP_INSERNAME1_password')]"
+					},
+					"LS_SQLSERVER_M_password": {
+						"value": "[parameters('LS_SQLSERVER_M_password')]"
+					},
+					"LS_SQLSERVER_MIG1_password": {
+						"value": "[parameters('LS_SQLSERVER_MIG1_password')]"
+					},
+					"LS_SQLSERVER_MIG11_password": {
+						"value": "[parameters('LS_SQLSERVER_MIG11_password')]"
+					},
+					"SP_INSERTINPUT_NAMES_password": {
+						"value": "[parameters('SP_INSERTINPUT_NAMES_password')]"
+					},
+					"lS_METADAT_SQLSERVER_password": {
+						"value": "[parameters('lS_METADAT_SQLSERVER_password')]"
+					},
+					"ls_sqlserver_mig_password": {
+						"value": "[parameters('ls_sqlserver_mig_password')]"
+					},
+					"DS_SQLSERVER_MIG_properties_typeProperties_server": {
+						"value": "[parameters('DS_SQLSERVER_MIG_properties_typeProperties_server')]"
+					},
+					"DS_SQLSERVER_MIG_properties_typeProperties_database": {
+						"value": "[parameters('DS_SQLSERVER_MIG_properties_typeProperties_database')]"
+					},
+					"DS_SQLSERVER_MIG_properties_typeProperties_userName": {
+						"value": "[parameters('DS_SQLSERVER_MIG_properties_typeProperties_userName')]"
+					},
+					"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_server": {
+						"value": "[parameters('LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_server')]"
+					},
+					"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_database": {
+						"value": "[parameters('LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_database')]"
+					},
+					"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_userName": {
+						"value": "[parameters('LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_userName')]"
+					},
+					"LS_SP_INSERNAME1_properties_typeProperties_server": {
+						"value": "[parameters('LS_SP_INSERNAME1_properties_typeProperties_server')]"
+					},
+					"LS_SP_INSERNAME1_properties_typeProperties_database": {
+						"value": "[parameters('LS_SP_INSERNAME1_properties_typeProperties_database')]"
+					},
+					"LS_SP_INSERNAME1_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SP_INSERNAME1_properties_typeProperties_userName')]"
+					},
+					"LS_SQLSERVER_M_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_M_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_M_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_M_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_M_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_M_properties_typeProperties_userName')]"
+					},
+					"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_MIG1_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_MIG1_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_MIG1_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_MIG1_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_MIG1_properties_typeProperties_userName')]"
+					},
+					"LS_SQLSERVER_MIG11_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_MIG11_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_MIG11_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_MIG11_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_MIG11_properties_typeProperties_userName')]"
+					},
+					"SP_INSERTINPUT_NAMES_properties_typeProperties_server": {
+						"value": "[parameters('SP_INSERTINPUT_NAMES_properties_typeProperties_server')]"
+					},
+					"SP_INSERTINPUT_NAMES_properties_typeProperties_database": {
+						"value": "[parameters('SP_INSERTINPUT_NAMES_properties_typeProperties_database')]"
+					},
+					"SP_INSERTINPUT_NAMES_properties_typeProperties_userName": {
+						"value": "[parameters('SP_INSERTINPUT_NAMES_properties_typeProperties_userName')]"
+					},
+					"lS_METADAT_SQLSERVER_properties_typeProperties_server": {
+						"value": "[parameters('lS_METADAT_SQLSERVER_properties_typeProperties_server')]"
+					},
+					"lS_METADAT_SQLSERVER_properties_typeProperties_database": {
+						"value": "[parameters('lS_METADAT_SQLSERVER_properties_typeProperties_database')]"
+					},
+					"lS_METADAT_SQLSERVER_properties_typeProperties_userName": {
+						"value": "[parameters('lS_METADAT_SQLSERVER_properties_typeProperties_userName')]"
+					},
+					"ls_sqlserver_mig_properties_typeProperties_server": {
+						"value": "[parameters('ls_sqlserver_mig_properties_typeProperties_server')]"
+					},
+					"ls_sqlserver_mig_properties_typeProperties_database": {
+						"value": "[parameters('ls_sqlserver_mig_properties_typeProperties_database')]"
+					},
+					"ls_sqlserver_mig_properties_typeProperties_userName": {
+						"value": "[parameters('ls_sqlserver_mig_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'dfmigrtiondev_ArmTemplate_0')]"
+			]
+		}
+	]
+}

@@ -1,0 +1,195 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "dfmigrtiondev"
+		},
+		"DS_LOOKUP_SQLSERVER_password": {
+			"value": ""
+		},
+		"DS_SQLSERVER_MIG_password": {
+			"value": ""
+		},
+		"LS_GETMETADATA001_accountKey": {
+			"value": ""
+		},
+		"LS_MIGRATION_CSV_accountKey": {
+			"value": ""
+		},
+		"LS_MIGRATION_PARQUET_accountKey": {
+			"value": ""
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_password": {
+			"value": ""
+		},
+		"LS_SP_INSERNAME1_password": {
+			"value": ""
+		},
+		"LS_SQLSERVER_M_password": {
+			"value": ""
+		},
+		"LS_SQLSERVER_MIG1_password": {
+			"value": ""
+		},
+		"LS_SQLSERVER_MIG11_password": {
+			"value": ""
+		},
+		"SP_INSERTINPUT_NAMES_password": {
+			"value": ""
+		},
+		"lS_METADAT_SQLSERVER_password": {
+			"value": ""
+		},
+		"ls_getmetadata_accountKey": {
+			"value": ""
+		},
+		"ls_getmetadata002_accountKey": {
+			"value": ""
+		},
+		"ls_lookup_accountKey": {
+			"value": ""
+		},
+		"ls_metadata_accountKey": {
+			"value": ""
+		},
+		"ls_metadata111_accountKey": {
+			"value": ""
+		},
+		"ls_new_migration_accountKey": {
+			"value": ""
+		},
+		"ls_sqlserver_mig_password": {
+			"value": ""
+		},
+		"ls_sqlserver_parquet_accountKey": {
+			"value": ""
+		},
+		"DS_LOOKUP_SQLSERVER_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"DS_LOOKUP_SQLSERVER_properties_typeProperties_database": {
+			"value": "Visionboardprac"
+		},
+		"DS_LOOKUP_SQLSERVER_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"DS_SQLSERVER_MIG_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"DS_SQLSERVER_MIG_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"DS_SQLSERVER_MIG_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"LS_GETMETADATA001_properties_typeProperties_url": {
+			"value": "https://adlsarundemo.dfs.core.windows.net/"
+		},
+		"LS_MIGRATION_CSV_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"LS_MIGRATION_PARQUET_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"LS_NEW_SQLSERVER_MIGRATION_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"LS_SP_INSERNAME1_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SP_INSERNAME1_properties_typeProperties_database": {
+			"value": "Visionboardprac"
+		},
+		"LS_SP_INSERNAME1_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"LS_SQLSERVER_M_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_M_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"LS_SQLSERVER_M_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG1_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"LS_SQLSERVER_MIG1_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"LS_SQLSERVER_MIG11_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG11_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"SP_INSERTINPUT_NAMES_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"SP_INSERTINPUT_NAMES_properties_typeProperties_database": {
+			"value": "Visionboardprac"
+		},
+		"SP_INSERTINPUT_NAMES_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"lS_METADAT_SQLSERVER_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"lS_METADAT_SQLSERVER_properties_typeProperties_database": {
+			"value": "AdventureWorks2019"
+		},
+		"lS_METADAT_SQLSERVER_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"ls_getmetadata_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_getmetadata002_properties_typeProperties_url": {
+			"value": "https://adlsarundemo.dfs.core.windows.net/"
+		},
+		"ls_lookup_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_metadata_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_metadata111_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_new_migration_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"ls_sqlserver_mig_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"ls_sqlserver_mig_properties_typeProperties_database": {
+			"value": "[[AdventureWorks2019]"
+		},
+		"ls_sqlserver_mig_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"ls_sqlserver_parquet_properties_typeProperties_url": {
+			"value": "https://adlsarunnewproject.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
