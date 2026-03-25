@@ -23,6 +23,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_M'"
 		},
+		"LS_SQLSERVER_MIG01_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG01'"
+		},
 		"LS_SQLSERVER_MIG1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG1'"
@@ -30,6 +34,10 @@
 		"LS_SQLSERVER_MIG11_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG11'"
+		},
+		"LS_VLP_SQL_WATERMARK_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_VLP_SQL_WATERMARK'"
 		},
 		"SP_INSERTINPUT_NAMES_password": {
 			"type": "secureString",
@@ -91,6 +99,18 @@
 			"type": "string",
 			"defaultValue": "Arun"
 		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MIGRATION"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
 		"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "localhost\\SQLEXPRESS"
@@ -112,6 +132,18 @@
 			"defaultValue": "AdventureWorks2019"
 		},
 		"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MIGRATION"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Arun"
 		},
@@ -261,6 +293,32 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQLSERVER_MIG01')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQLSERVER_MIG01_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_SQLSERVER_MIG1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -303,6 +361,32 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('LS_SQLSERVER_MIG11_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_VLP_SQL_WATERMARK')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_server')]",
+					"database": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_VLP_SQL_WATERMARK_password')]"
 					}
 				},
 				"connectVia": {
@@ -927,119 +1011,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_NEW_SQLSERVER_MIGRATION')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PL_SQLSERVER_MIG')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "CPY_SQLSERVER_MIG",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "SqlServerSource",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"sink": {
-								"type": "ParquetSink",
-								"storeSettings": {
-									"type": "AzureBlobFSWriteSettings"
-								},
-								"formatSettings": {
-									"type": "ParquetWriteSettings"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "DS_SQLSERVER_MIG",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "ds_sqlserver_parquet",
-								"type": "DatasetReference",
-								"parameters": {}
-							}
-						]
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2026-03-07T13:38:34Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_SQLSERVER_MIG')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Lookup1",
-						"type": "Lookup",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "0.12:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "SqlServerSource",
-								"sqlReaderQuery": "SELECT EmpID, EmpName, DepartmentID\nFROM dbo.Employees\nWHERE EmpID <= 1200;",
-								"queryTimeout": "02:00:00",
-								"partitionOption": "None"
-							},
-							"dataset": {
-								"referenceName": "DS_LOOKUP_SQLSERVER",
-								"type": "DatasetReference",
-								"parameters": {}
-							},
-							"firstRowOnly": false
-						}
-					}
-				],
-				"policy": {
-					"elapsedTimeMetric": {}
-				},
-				"annotations": [],
-				"lastPublishTime": "2026-03-12T15:08:04Z"
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_LOOKUP_SQLSERVER')]"
 			]
 		}
 	]

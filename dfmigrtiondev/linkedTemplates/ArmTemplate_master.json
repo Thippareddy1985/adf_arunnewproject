@@ -39,6 +39,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_M'"
 		},
+		"LS_SQLSERVER_MIG01_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG01'"
+		},
 		"LS_SQLSERVER_MIG1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG1'"
@@ -46,6 +50,10 @@
 		"LS_SQLSERVER_MIG11_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG11'"
+		},
+		"LS_VLP_SQL_WATERMARK_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_VLP_SQL_WATERMARK'"
 		},
 		"SP_INSERTINPUT_NAMES_password": {
 			"type": "secureString",
@@ -159,6 +167,18 @@
 			"type": "string",
 			"defaultValue": "Arun"
 		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MIGRATION"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
 		"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "localhost\\SQLEXPRESS"
@@ -180,6 +200,18 @@
 			"defaultValue": "AdventureWorks2019"
 		},
 		"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MIGRATION"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Arun"
 		},
@@ -376,11 +408,17 @@
 					"LS_SQLSERVER_M_password": {
 						"value": "[parameters('LS_SQLSERVER_M_password')]"
 					},
+					"LS_SQLSERVER_MIG01_password": {
+						"value": "[parameters('LS_SQLSERVER_MIG01_password')]"
+					},
 					"LS_SQLSERVER_MIG1_password": {
 						"value": "[parameters('LS_SQLSERVER_MIG1_password')]"
 					},
 					"LS_SQLSERVER_MIG11_password": {
 						"value": "[parameters('LS_SQLSERVER_MIG11_password')]"
+					},
+					"LS_VLP_SQL_WATERMARK_password": {
+						"value": "[parameters('LS_VLP_SQL_WATERMARK_password')]"
 					},
 					"SP_INSERTINPUT_NAMES_password": {
 						"value": "[parameters('SP_INSERTINPUT_NAMES_password')]"
@@ -427,6 +465,15 @@
 					"LS_SQLSERVER_M_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQLSERVER_M_properties_typeProperties_userName')]"
 					},
+					"LS_SQLSERVER_MIG01_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_server')]"
+					},
+					"LS_SQLSERVER_MIG01_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_database')]"
+					},
+					"LS_SQLSERVER_MIG01_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_userName')]"
+					},
 					"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
 						"value": "[parameters('LS_SQLSERVER_MIG1_properties_typeProperties_server')]"
 					},
@@ -444,6 +491,15 @@
 					},
 					"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
 						"value": "[parameters('LS_SQLSERVER_MIG11_properties_typeProperties_userName')]"
+					},
+					"LS_VLP_SQL_WATERMARK_properties_typeProperties_server": {
+						"value": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_server')]"
+					},
+					"LS_VLP_SQL_WATERMARK_properties_typeProperties_database": {
+						"value": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_database')]"
+					},
+					"LS_VLP_SQL_WATERMARK_properties_typeProperties_userName": {
+						"value": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_userName')]"
 					},
 					"SP_INSERTINPUT_NAMES_properties_typeProperties_server": {
 						"value": "[parameters('SP_INSERTINPUT_NAMES_properties_typeProperties_server')]"
@@ -476,6 +532,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'dfmigrtiondev_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "dfmigrtiondev_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'dfmigrtiondev_ArmTemplate_1')]"
 			]
 		}
 	]

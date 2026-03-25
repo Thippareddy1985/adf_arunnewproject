@@ -29,10 +29,16 @@
 		"LS_SQLSERVER_M_password": {
 			"value": ""
 		},
+		"LS_SQLSERVER_MIG01_password": {
+			"value": ""
+		},
 		"LS_SQLSERVER_MIG1_password": {
 			"value": ""
 		},
 		"LS_SQLSERVER_MIG11_password": {
+			"value": ""
+		},
+		"LS_VLP_SQL_WATERMARK_password": {
 			"value": ""
 		},
 		"SP_INSERTINPUT_NAMES_password": {
@@ -119,6 +125,15 @@
 		"LS_SQLSERVER_M_properties_typeProperties_userName": {
 			"value": "Arun"
 		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_database": {
+			"value": "MIGRATION"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
 		"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
 			"value": "localhost\\SQLEXPRESS"
 		},
@@ -135,6 +150,15 @@
 			"value": "AdventureWorks2019"
 		},
 		"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+			"value": "Arun"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_server": {
+			"value": "localhost\\SQLEXPRESS"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_database": {
+			"value": "MIGRATION"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_userName": {
 			"value": "Arun"
 		},
 		"SP_INSERTINPUT_NAMES_properties_typeProperties_server": {

@@ -39,6 +39,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_M'"
 		},
+		"LS_SQLSERVER_MIG01_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG01'"
+		},
 		"LS_SQLSERVER_MIG1_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG1'"
@@ -46,6 +50,10 @@
 		"LS_SQLSERVER_MIG11_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_SQLSERVER_MIG11'"
+		},
+		"LS_VLP_SQL_WATERMARK_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_VLP_SQL_WATERMARK'"
 		},
 		"SP_INSERTINPUT_NAMES_password": {
 			"type": "secureString",
@@ -159,6 +167,18 @@
 			"type": "string",
 			"defaultValue": "Arun"
 		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MIGRATION"
+		},
+		"LS_SQLSERVER_MIG01_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
 		"LS_SQLSERVER_MIG1_properties_typeProperties_server": {
 			"type": "string",
 			"defaultValue": "localhost\\SQLEXPRESS"
@@ -180,6 +200,18 @@
 			"defaultValue": "AdventureWorks2019"
 		},
 		"LS_SQLSERVER_MIG11_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "Arun"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "localhost\\SQLEXPRESS"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MIGRATION"
+		},
+		"LS_VLP_SQL_WATERMARK_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "Arun"
 		},
@@ -1455,6 +1487,34 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/LS_SQLSERVER_MIG01')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_server')]",
+					"database": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_SQLSERVER_MIG01_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_SQLSERVER_MIG01_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/LS_SQLSERVER_MIG1')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -1499,6 +1559,34 @@
 					"password": {
 						"type": "SecureString",
 						"value": "[parameters('LS_SQLSERVER_MIG11_password')]"
+					}
+				},
+				"connectVia": {
+					"referenceName": "integrationRuntime1",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/integrationRuntimes/integrationRuntime1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_VLP_SQL_WATERMARK')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"server": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_server')]",
+					"database": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_database')]",
+					"encrypt": "optional",
+					"trustServerCertificate": false,
+					"authenticationType": "Windows",
+					"userName": "[parameters('LS_VLP_SQL_WATERMARK_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_VLP_SQL_WATERMARK_password')]"
 					}
 				},
 				"connectVia": {
